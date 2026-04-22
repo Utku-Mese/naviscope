@@ -1,5 +1,7 @@
 # Naviscope
 
+Ilgili Makale: https://medium.com/@mutkumese/gnss-ve-konum-servisleri-ger%C3%A7ekte-nas%C4%B1l-%C3%A7al%C4%B1%C5%9F%C4%B1r-7c9ac4ed998b
+
 Naviscope, telefonunuzun konumunu “tek bir nokta” olarak değil; **GNSS fix kalitesi, uydu sinyalleri, doğruluk ve stabilite** gibi metriklerle birlikte görmenizi sağlayan bir mobil uygulamadır.
 
 <img src="doc%20images/naviscope poster.png" alt="Naviscope Poster" width="1280" />
