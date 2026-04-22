@@ -2,6 +2,8 @@
 
 Naviscope, telefonunuzun konumunu “tek bir nokta” olarak değil; **GNSS fix kalitesi, uydu sinyalleri, doğruluk ve stabilite** gibi metriklerle birlikte görmenizi sağlayan bir mobil uygulamadır.
 
+<img src="doc%20images/naviscope poster.png" alt="Naviscope Poster" width="1280" />
+
 ---
 
 ### Naviscope ne yapar?
