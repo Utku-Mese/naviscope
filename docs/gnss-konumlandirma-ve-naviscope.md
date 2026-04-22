@@ -57,6 +57,10 @@ GNSS’in “mucizesi” şu fikre dayanır:
 
 ---
 
+
+
+
+
 ## 3. GNSS nasıl konum üretir? (pseudorange, trilaterasyon, saat hatası)
 
 ### 3.1 Pseudorange nedir?
@@ -110,6 +114,16 @@ Uygulama tarafında fix türleri şu şekilde modelleniyor:
 - **fix3D**: 3 boyutlu çözüm
 
 Naviscope dashboard’unda bu durum bir rozetle gösteriliyor ve fix varsa kalite skoru da yanına ekleniyor.
+
+
+
+
+
+
+
+
+
+
 
 ### 4.2 DOP (Dilution of Precision) – geometri neden önemli?
 
@@ -243,6 +257,14 @@ Android tarafında manifestte en azından şu izinler tanımlı:
 
 > Pratik not: Android’de “precise (fine)” izin verilmezse bazı GNSS durum/satellite API’leri uydu verisini kısıtlayabilir. Uygulamada bu durum, uydu ekranlarında kullanıcıya açıkça anlatılıyor.
 
+
+
+
+
+
+
+
+
 ### 7.2 Dashboard: “tek bakışta GNSS sağlığı”
 
 Dashboard, GNSS’i bir mühendislik aracı gibi değil, **anlaşılır bir sağlık paneli** gibi sunuyor:
@@ -281,6 +303,14 @@ Uydu ekranı, GNSS’in gerçekten “uydularla” çalıştığını gösteren 
 
 Android’de **fine permission** yoksa veya platform sınırlıysa, kullanıcıya neden uydu verisi göremediği anlaşılır şekilde iletiliyor.
 
+
+
+
+
+
+
+
+
 ### 7.5 Skyplot: gökyüzü geometrisi
 
 Skyplot ekranı, uyduların gökyüzündeki dağılımını gösterir:
@@ -291,8 +321,6 @@ Skyplot ekranı, uyduların gökyüzündeki dağılımını gösterir:
 - **Elevation mask**: ufka yakın (düşük elevation) uyduları gizleyip multipath riskini azaltmaya yönelik analiz aracı
 
 iOS tarafında CoreLocation satelit düzeyi veriyi sağlamadığı için bu ekran platform kısıtını kullanıcıya açıkça bildirir.
-
-
 
 ![4](/Users/utku/Downloads/GNSS images/4.png)
 
@@ -347,6 +375,12 @@ Uygulamada heading iki yoldan gelebilir:
 Bu yüzden dururken heading “zıplayabilir”; hareket edince daha stabil hale gelmesi normaldir.
 
 ---
+
+
+
+
+
+
 
 ## 9. Tasarım/ürün önerileri: kullanıcıya doğru konum deneyimi
 
