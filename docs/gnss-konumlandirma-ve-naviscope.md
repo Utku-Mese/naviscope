@@ -1,8 +1,6 @@
-# GNSS ve Konumlandırma Servisleri: Nasıl Çalışır? 
+# GNSS ve Konumlandırma Servisleri: Nasıl Çalışır?
 
 Bu doküman, GNSS (Global Navigation Satellite System) başta olmak üzere modern konumlandırma servislerinin (GNSS, hücresel, Wi‑Fi, IMU/sensör füzyonu) uçtan uca nasıl çalıştığını anlatır. Anlatım, uygulamadaki akış ve ekranlarla da (izin ekranı, dashboard metrikleri, harita, uydular listesi, skyplot) birebir ilişkilendirilmiştir.
-
-
 
 ## İçindekiler
 
@@ -33,7 +31,7 @@ Bu doküman, GNSS (Global Navigation Satellite System) başta olmak üzere moder
 
 Uygulamalar çoğu zaman bu çıktıları **tek bir sağlayıcıdan** değil, **birden fazla kaynaktan** birleştirerek üretir: GNSS + ağ + sensörler + filtreleme + OS servisleri.
 
-![1](/Users/utku/Downloads/GNSS images/1.png)
+![1](../doc%20images/1.png)
 
 ---
 
@@ -45,7 +43,7 @@ GNSS şemsiyesi altında birden fazla uydu takımyıldızı vardır:
 - **GLONASS (Rusya)**
 - **Galileo (AB)**
 - **BeiDou (Çin)**
-*(bazı cihazlarda QZSS, NavIC gibi bölgesel sistemler de görülebilir)*
+  _(bazı cihazlarda QZSS, NavIC gibi bölgesel sistemler de görülebilir)_
 
 Her uydu, çok hassas saatlerle zaman bilgisi ve yörünge bilgisi (ephemeris) içeren sinyaller yayınlar. Alıcı (telefon) bu sinyalleri alıp işleyerek konumunu hesaplar.
 
@@ -57,10 +55,6 @@ GNSS’in “mucizesi” şu fikre dayanır:
 
 ---
 
-
-
-
-
 ## 3. GNSS nasıl konum üretir? (pseudorange, trilaterasyon, saat hatası)
 
 ### 3.1 Pseudorange nedir?
@@ -70,6 +64,7 @@ GNSS’in “mucizesi” şu fikre dayanır:
 $$
 \text{mesafe} = c \cdot (t_\text{alım} - t_\text{gönderim})
 $$
+
 Burada \(c\) ışık hızıdır. Ancak telefonun saati, uydular kadar hassas değildir. Bu yüzden hesaplanan mesafe “gerçek mesafe” değil **pseudorange** olur; içinde alıcı saat hatası (clock bias) ve çeşitli gecikmeler bulunur.
 
 Basitleştirilmiş ölçüm modeli:
@@ -77,7 +72,6 @@ Basitleştirilmiş ölçüm modeli:
 $$
 \rho_i = r_i + c \cdot \Delta t + d_\text{iono} + d_\text{tropo} + \epsilon
 $$
-
 
 - $$rho_i$$: i’inci uyduya pseudorange
 - $$r_i$$: geometrik gerçek mesafe
@@ -98,7 +92,7 @@ Toplam 4 bilinmeyen → en az 4 uydu ölçümü gerekir. 2D fix (yüksekliği sa
 
 Konum “anlık” çözüm gibi görünse de, alıcı sinyal taşıyıcısındaki Doppler kaymasını ölçerek **hızı** çok iyi tahmin edebilir. Bu, düşük örneklemli konumdan türetilen hızdan genellikle daha stabildir.
 
-![2](/Users/utku/Downloads/GNSS images/2.png)
+![2](../doc%20images/2.png)
 
 ---
 
@@ -114,16 +108,6 @@ Uygulama tarafında fix türleri şu şekilde modelleniyor:
 - **fix3D**: 3 boyutlu çözüm
 
 Naviscope dashboard’unda bu durum bir rozetle gösteriliyor ve fix varsa kalite skoru da yanına ekleniyor.
-
-
-
-
-
-
-
-
-
-
 
 ### 4.2 DOP (Dilution of Precision) – geometri neden önemli?
 
@@ -165,7 +149,7 @@ Naviscope’ta uydular listesinde sinyal gücünü **C/N0 dB‑Hz** gibi bir met
 
 > Not: Tek başına C/N0 her şeyi açıklamaz; geometri ve NLOS/multipath etkisi belirleyicidir.
 
-![3](/Users/utku/Downloads/GNSS images/3.png)
+![3](../doc%20images/3.png)
 
 ---
 
@@ -257,14 +241,6 @@ Android tarafında manifestte en azından şu izinler tanımlı:
 
 > Pratik not: Android’de “precise (fine)” izin verilmezse bazı GNSS durum/satellite API’leri uydu verisini kısıtlayabilir. Uygulamada bu durum, uydu ekranlarında kullanıcıya açıkça anlatılıyor.
 
-
-
-
-
-
-
-
-
 ### 7.2 Dashboard: “tek bakışta GNSS sağlığı”
 
 Dashboard, GNSS’i bir mühendislik aracı gibi değil, **anlaşılır bir sağlık paneli** gibi sunuyor:
@@ -303,14 +279,6 @@ Uydu ekranı, GNSS’in gerçekten “uydularla” çalıştığını gösteren 
 
 Android’de **fine permission** yoksa veya platform sınırlıysa, kullanıcıya neden uydu verisi göremediği anlaşılır şekilde iletiliyor.
 
-
-
-
-
-
-
-
-
 ### 7.5 Skyplot: gökyüzü geometrisi
 
 Skyplot ekranı, uyduların gökyüzündeki dağılımını gösterir:
@@ -322,7 +290,7 @@ Skyplot ekranı, uyduların gökyüzündeki dağılımını gösterir:
 
 iOS tarafında CoreLocation satelit düzeyi veriyi sağlamadığı için bu ekran platform kısıtını kullanıcıya açıkça bildirir.
 
-![4](/Users/utku/Downloads/GNSS images/4.png)
+![4](../doc%20images/4.png)
 
 ---
 
@@ -376,12 +344,6 @@ Bu yüzden dururken heading “zıplayabilir”; hareket edince daha stabil hale
 
 ---
 
-
-
-
-
-
-
 ## 9. Tasarım/ürün önerileri: kullanıcıya doğru konum deneyimi
 
 Bu kısım, makaleyi “uygulama geliştirme” açısından da tamamlar.
@@ -391,7 +353,7 @@ Bu kısım, makaleyi “uygulama geliştirme” açısından da tamamlar.
 - **‘Live’ hissi**: Dashboard’daki live indicator ve sparkline’lar iyi; örnekleme aralığı düşerse kullanıcıya “low update rate” gibi durumlar ayrıca gösterilebilir.
 - **Hata modları**: GPS kapalı, izin yok, indoor/multipath, arka plan kısıtları gibi durumlar ayrı ayrı mesajlanmalı.
 
-![son](/Users/utku/Downloads/GNSS images/son.png)
+![son](../doc%20images/5.png)
 
 ---
 
@@ -422,4 +384,3 @@ CoreLocation, satelit düzeyi telemetriyi genel uygulama API’leriyle sağlamaz
 - **Multipath**: Yansıma nedeniyle gecikmeli sinyal; özellikle şehir içi hatası.
 - **Fused Location**: OS’in GNSS + ağ + sensörleri birleştirerek verdiği konum.
 - **Heading**: Yön; pusula (manyetik) veya course (hareket yönü) olabilir.
-
