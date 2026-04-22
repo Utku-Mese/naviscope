@@ -20,20 +20,20 @@ class TelemetryHistoryNotifier
   }
 
   /// Accuracy history as Y values (meters, clamped to 0–100).
-  List<double> get accuracyHistory =>
-      state.map((f) => (f.location.horizontalAccuracy ?? 100.0).clamp(0, 100))
-          .toList()
-          .cast<double>();
+  List<double> get accuracyHistory => state
+      .map((f) =>
+          (f.location.horizontalAccuracy ?? 100.0).clamp(0.0, 100.0).toDouble())
+      .toList();
 
   /// Speed history in km/h.
-  List<double> get speedHistory =>
-      state.map((f) => (f.location.speedKmh ?? 0.0).clamp(0, 200))
-          .toList()
-          .cast<double>();
+  List<double> get speedHistory => state
+      .map(
+          (f) => (f.location.speedKmh ?? 0.0).clamp(0.0, 200.0).toDouble())
+      .toList();
 
   /// Average CN0 history.
   List<double> get cn0History =>
-      state.map((f) => f.gnss?.averageCn0 ?? 0.0).toList().cast<double>();
+      state.map((f) => (f.gnss?.averageCn0 ?? 0.0).toDouble()).toList();
 }
 
 final telemetryHistoryProvider =
