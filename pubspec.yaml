@@ -46,6 +46,23 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   build_runner: ^2.4.14
   riverpod_generator: ^2.6.2
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  image_path: assets/images/icon.png
+  android: true
+  ios: true
+  # Matches the icon’s dark navy background for adaptive (foreground) mask.
+  adaptive_icon_background: "#0A0F1A"
+  adaptive_icon_foreground: assets/images/icon.png
+  macos:
+    generate: true
+  web:
+    generate: true
+    background_color: "#0A0F1A"
+    theme_color: "#00D4FF"
+  windows:
+    generate: true
 
 flutter:
   generate: true
